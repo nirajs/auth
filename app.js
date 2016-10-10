@@ -17,7 +17,7 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(session({secret:'test-ninja'}));
+app.use(session({secret:Config.secretKey}));
 app.use(passport.initialize());
 app.use(passport.session({resave: true, saveUninitialized: true}));
 app.use(flash());
@@ -63,17 +63,6 @@ var db = mongoose.connection;
 //
 app.use(passport.initialize());
 
-
-
-
-  // the callback after google has authenticated the user
-/*    app.get('/auth/google/callback',
-            passport.authenticate('google', {
-                    successRedirect : '/profile',
-                    failureRedirect : '/',
-                    session: false
-            }));
-*/
 
 app.set('port', (process.env.PORT || 4000));
 

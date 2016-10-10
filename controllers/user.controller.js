@@ -6,8 +6,7 @@ var User = require('../models/user');
 var findByEmail = function (email, next) {
     User.findOne({email: email}, function (err, user) {
         if (err)
-            { console.log("inside"); return next(err); }
-        console.log("inner");
+            { return next(err); }
         return next(null, user);
     });
 };
